@@ -8,7 +8,7 @@ class App extends React.Component {
     return (
       <>
         <h1>
-          Hello {name}
+          Heyo {name}
         </h1>
       </>
     );
