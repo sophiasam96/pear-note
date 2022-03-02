@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { NavigationType } from 'react-router-dom';
+import SidebarNote from './SidebarNote.jsx'
 
 class Sidebar extends Component {
   constructor() {
     super();
-    this.state = {
+    this.state = { 
       notes: []
     }
   }
@@ -23,12 +25,21 @@ class Sidebar extends Component {
 }
 
   render() {
-    console.log(this.state.notes);
+    // console.log(this.state.notes)
+    const notesList = [];
+    this.state.notes.map(note => {
+      notesList.push(<SidebarNote 
+        key={note.note_id}
+        text={note.note}
+        date={note.date}
+      />)
+    })
+      console.log('notesList ', notesList);
     return (
-      <div>
-        <p> Current notes: {this.state.notes}</p>
-      </div>
-    )
+     <div className='app-sidebar'>
+       {notesList}
+       </div>
+       )
   }
 }
 

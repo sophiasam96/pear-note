@@ -40,13 +40,13 @@ app.put('/api/:id', noteController.updateNote, (req, res) => {
 });
 
 // DELETE SPECIFIED NOTE (USING ID)
-app.delete('/api/:id', noteController.updateNote, (req, res) => {
+app.delete('/api/:id', noteController.deleteNote, (req, res) => {
   return res.status(200).json('Note was successfully deleted!');
 });
 
 // catch-all route handler for any requests to an unknown route
 app.use('*', (req, res) => {
-  console.log('caught here');
+  console.log('404 Error Caught Here');
   res.status(404).send('This is not the page you\'re looking for...')
 });
 
