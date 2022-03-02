@@ -14,8 +14,11 @@
     "test": "mocha",
     "serve": "nodemon server/server.js"
   },
+  "proxy": "http://localhost:3000",
+  
   "dependencies": {
     "express": "^4.17.3",
+    "http-proxy-middleware": "^2.0.3",
     "node-fetch": "^3.2.0",
     "node-postgres": "^0.6.2",
     "pg": "^8.7.3",

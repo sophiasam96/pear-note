@@ -45,7 +45,10 @@ app.delete('/api/:id', noteController.updateNote, (req, res) => {
 });
 
 // catch-all route handler for any requests to an unknown route
-app.use((req, res) => res.status(404).send('This is not the page you\'re looking for...'));
+app.use('*', (req, res) => {
+  console.log('caught here');
+  res.status(404).send('This is not the page you\'re looking for...')
+});
 
 // Global error handling middleware
 // How can we trigger this to run? 

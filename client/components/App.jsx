@@ -1,16 +1,15 @@
 
 import React from "react";
 import { hot } from 'react-hot-loader/root';
+import Sidebar from './Sidebar.jsx'
 
 class App extends React.Component {
   render() {
-    const { name } = this.props;
+    
     return (
-      <>
-        <h1>
-          Heyo {name}
-        </h1>
-      </>
+      <div>
+        <Sidebar />
+      </div>
     );
   }
 }

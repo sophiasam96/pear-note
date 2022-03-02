@@ -43,18 +43,14 @@ const config = {
     ]
   },
   devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        secure: false,
+      },
+    },
     'static': {
       directory: './dist'
-    },
-    proxy: {
-      '/api/**': {
-        target: 'http://localhost:3000/',
-        secure: false,
-      },
-      '/assets/**': {
-        target: 'http://localhost:3000/',
-        secure: false,
-      },
     },
   },
   plugins: [
@@ -62,7 +58,8 @@ const config = {
       // templateContent: ({ htmlWebpackPlugin }) => '<!DOCTYPE html><html><head><meta charset=\"utf-8\"><title>' + htmlWebpackPlugin.options.title + '</title></head><body><div id=\"app\"></div></body></html>',
       template: './client/index.html',
     })
-  ]
+  ],
+  
 };
 
 module.exports = config;
