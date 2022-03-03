@@ -2,23 +2,42 @@ import React, { Component } from 'react';
 import { NavigationType } from 'react-router-dom';
 
 class Main extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+  }
+
+  onEditField(key, val) {
+
   }
 
   render() {
-    console.log('in main ', this.props.activeNote[0])
-    this.props.activeNote
     return (
      <div className='app-main'>
-       <h1>Main</h1>
+       <h1 className='app-main-header'>Main</h1>
 
        <div className='app-main-note-edit'> 
-    
-        <input type='text' id='title' autoFocus></input>
 
-        <textarea id='body' placeholder='Write Note Here! :)'/>
+        {this.props.activeNote.map(active => 
+          <input 
+            key={`inputTitle ${active.note_id}`}
+            type='text' 
+            id='title' 
+            value={active.title}
+            onChange={(e) => e.target.value} 
+            autoFocus 
+          />
+        )}
 
+        {this.props.activeNote.map(active => 
+          <textarea 
+            key={`inputNote ${active.note_id}`}
+            id='body' 
+            placeholder='Write Note Here! :)'
+            value={active.note}
+            onChange={(e) => e.target.value}
+          />
+        )}
+        
        </div>
 
         <div className='app-main-note-preview'>

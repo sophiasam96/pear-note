@@ -90,6 +90,13 @@ button:hover {
   width: 70%;
   height: 100vh;
 }
+
+.app-main-header {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 25px;
+}
+
 .app-main-note-edit,
 .app-main-note-preview {
   height: 50vh;
@@ -105,8 +112,9 @@ button:hover {
 }
 
 /* Editing */
+
 .app-main-note-edit {
-  padding: 25px;
+  padding: 20px;
 }
 
 .app-main-note-edit input,
