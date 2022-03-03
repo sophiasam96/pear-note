@@ -27,10 +27,10 @@ const noteController = {
   
   async newNote (req, res, next) {
     try {
-      const {note} = req.body;
+      const {title, note} = req.body;
       // const {date} = new Date;
-      const notesQuery = 'INSERT INTO notes (note) VALUES ($1) RETURNING *'
-      const result = await db.query(notesQuery, [note]); 
+      const notesQuery = 'INSERT INTO notes (title, note) VALUES ($1, $2) RETURNING *'
+      const result = await db.query(notesQuery, [title, note]); 
       // const addDate = await db.query(dateQuery);
       res.locals.newNote = result.rows;
       return next(); 
@@ -42,10 +42,10 @@ const noteController = {
     async updateNote (req, res, next) {
       try {
         const { id } = req.params;
-        const { note } = req.body;
+        const { title , note } = req.body;
 
-        const notesQuery = 'UPDATE notes SET note = $1 WHERE note_id = $2';
-        const result = await db.query(notesQuery, [note, id]); 
+        const notesQuery = 'UPDATE notes SET title = $1, note = $2 WHERE note_id = $3';
+        const result = await db.query(notesQuery, [title, note, id]); 
         return next();
 
       } catch (err) {

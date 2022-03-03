@@ -14,7 +14,7 @@ body,
   height: 100vh;
   overflow: hidden;
   font-size: 16px;
-  background: url(https://www.toptal.com/designers/subtlepatterns/patterns/lightpaperfibers.png);
+  /* background: url(https://www.toptal.com/designers/subtlepatterns/patterns/lightpaperfibers.png); */
 }
 
 button {

@@ -5,23 +5,20 @@ class SidebarNote extends Component {
     super(props)
   }
   render() {
+    const {title, text, date, id} = this.props;
+    const {deleteNoteButton, activeNote, setActiveNote} = this.props;
+  
     return (
       <>
-      <div className="app-sidebar-header">
-        <h1>Notes</h1>
-        <button>Add</button>
-      </div>
-      
-      <div className="app-sidebar-notes">
-        <div className="app-sidebar-note">
+        <div className={`app-sidebar-note`} onClick={() => setActiveNote(id)}>
           <div className="sidebar-note-title">
-            <strong>TITLE</strong>
-            <button>Delete</button>
+            <strong>{title}</strong>
+            <button onClick={() => deleteNoteButton(id)}>Delete</button>
           </div>
-          <p>{this.props.text}</p>
-          <small className='note-meta'>Last Modified {this.props.date}</small>
+          <p>{text && text.substr(0, 20) + '...'}</p>
+          <small className='note-meta'>Last Modified{" "} {new Date(date).toLocaleDateString('en-US', {hour: '2-digit', minute: '2-digit'})}</small>
         </div>
-      </div>
+
 
        
       </> 
