@@ -4,7 +4,6 @@ import { NavigationType } from 'react-router-dom';
 class Main extends Component {
   constructor() {
     super();
-    
   }
 
   render() {
@@ -22,15 +21,21 @@ class Main extends Component {
 
        </div>
 
-       <div className='app-main-note-preview'>
-        <h1 className="preview-title" placeholder="Title">{this.props.activeNote.title}</h1>
-        <div className="markdown-preview "placeholder="Preview"></div>
+        <div className='app-main-note-preview'>
+          {this.props.activeNote.map(active => 
+          <h1 key={`activeTitle${active.note_id}`} className="preview-title" placeholder="Title">{active.title}</h1>
+          )}
+          
 
-       </div>
-
-     </div>
-       )
-  }
-}
-
-export default Main;
+          {this.props.activeNote.map(active => 
+          <div key={`activeNote${active.note_id}`} className="markdown-preview" placeholder="Preview">{active.note}</div> 
+          )}
+        
+          </div>
+        </div>
+        )
+      }
+    }
+    
+    export default Main;
+    

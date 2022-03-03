@@ -33,13 +33,13 @@ class App extends Component {
 }
 
   setActiveNote(id) {
-    console.log('setActiveNote', id);
+    // console.log('setActiveNote', id);
     const {notes} = this.state.notes; 
     fetch(`/api/${id}`)
     .then(res => res.json())
     .then(data => {
       this.setState({ activeNote: data })
-      console.log('setActive, ', this.state)
+      // console.log('setActive, ', this.state)
     })
     .catch(err => console.log(err));
   }
@@ -76,15 +76,15 @@ class App extends Component {
       console.log(id)
       fetch(`/api/${id}`, { method: 'DELETE' })
         .then(() => console.log('Delete successful'));
-        location.reload();
+        location.reload()
   }
   
 
 
   render() {
-    
 
-    console.log('state in mount', this.state.notes)
+
+    // console.log('state in mount', this.state.notes)
     return (
       <div className='App'>
         <Sidebar 
