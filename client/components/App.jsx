@@ -18,7 +18,8 @@ class App extends Component {
   componentDidMount() {
     fetch('/api')
     .then(res => res.json())
-    .then(data => this.setState({ notes: data, activeNote : {}}))
+    .then(data => this.setState({ notes: data}))
+    
     .catch(err => console.log(err));
 
   }
@@ -33,11 +34,12 @@ class App extends Component {
 
   setActiveNote(id) {
     console.log('setActiveNote', id);
+    const {notes} = this.state.notes; 
     fetch(`/api/${id}`)
     .then(res => res.json())
     .then(data => {
-      this.state.activeNote = data
-      console.log(this.state.activeNote)
+      this.setState({ activeNote: data })
+      console.log('setActive, ', this.state)
     })
     .catch(err => console.log(err));
   }
@@ -80,6 +82,9 @@ class App extends Component {
 
 
   render() {
+    
+
+    console.log('state in mount', this.state.notes)
     return (
       <div className='App'>
         <Sidebar 

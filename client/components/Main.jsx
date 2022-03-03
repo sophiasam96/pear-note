@@ -8,8 +8,8 @@ class Main extends Component {
   }
 
   render() {
-    const {activeNote} = this.props;
-
+    console.log('in main ', this.props.activeNote[0])
+    this.props.activeNote
     return (
      <div className='app-main'>
        <h1>Main</h1>
@@ -23,8 +23,8 @@ class Main extends Component {
        </div>
 
        <div className='app-main-note-preview'>
-        <h1 className="preview-title" placeholder="Title">{activeNote.title}</h1>
-        <div className="markdown-preview "placeholder="Preview">{activeNote['note']}</div>
+        <h1 className="preview-title" placeholder="Title">{this.props.activeNote.title}</h1>
+        <div className="markdown-preview "placeholder="Preview"></div>
 
        </div>
 
