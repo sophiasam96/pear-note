@@ -7,11 +7,39 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      activeNote : {},
+      notes: [],
+      activeNote : [],
     }
+    this.setActiveNote = this.setActiveNote.bind(this);
     this.addNote = this.addNote.bind(this);
     this.deleteNote = this.deleteNote.bind(this);
-    this.setActiveNote = this.setActiveNote(this);
+  }
+
+  componentDidMount() {
+    fetch('/api')
+    .then(res => res.json())
+    .then(data => this.setState({ notes: data, activeNote : {}}))
+    .catch(err => console.log(err));
+
+  }
+  
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    clearInterval(this.interval);
+    this.setState = (state,callback)=>{
+    return;
+    };
+}
+
+  setActiveNote(id) {
+    console.log('setActiveNote', id);
+    fetch(`/api/${id}`)
+    .then(res => res.json())
+    .then(data => {
+      this.state.activeNote = data
+      console.log(this.state.activeNote)
+    })
+    .catch(err => console.log(err));
   }
 
 
@@ -49,23 +77,19 @@ class App extends Component {
         location.reload();
   }
   
-  setActiveNote(id) {
-    console.log('setActiveNote', id);
-    // fetch(`/api/${id}`)
-    // .then(res => {
-    //   res.json()
-    //   console.log(res.json)
-    // })
-    // .then(data => this.state = activeNote: data))
-      
-    // .catch(err => console.log(err));
-  }
+
 
   render() {
     return (
       <div className='App'>
-        <Sidebar addNote={this.addNote} deleteNote={this.deleteNote} setActiveNote={this.setActiveNote}/>
-        <Main />
+        <Sidebar 
+          notes={this.state.notes}
+          setActiveNote={this.setActiveNote}
+          activeNote={this.state.activeNote}
+          addNote={this.addNote} 
+          deleteNote={this.deleteNote} 
+        />
+        <Main activeNote={this.state.activeNote}/>
       </div>
     );
   }

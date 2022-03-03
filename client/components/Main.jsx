@@ -4,27 +4,12 @@ import { NavigationType } from 'react-router-dom';
 class Main extends Component {
   constructor() {
     super();
-    this.state = { 
-      
-    }
+    
   }
 
-//   componentDidMount() {
-//     fetch('/api')
-//     .then(res => res.json())
-//     .then(data => this.setState({ notes: data }))
-//     .catch(err => console.log(err));
-//   }
-  
-//   componentWillUnmount() {
-//     // fix Warning: Can't perform a React state update on an unmounted component
-//     this.setState = (state,callback)=>{
-//         return;
-//     };
-// }
-
   render() {
-   
+    const {activeNote} = this.props;
+
     return (
      <div className='app-main'>
        <h1>Main</h1>
@@ -38,8 +23,8 @@ class Main extends Component {
        </div>
 
        <div className='app-main-note-preview'>
-        <h1 className="preview-title">TITLE</h1>
-        <div className="markdown-preview">Preview</div>
+        <h1 className="preview-title" placeholder="Title">{activeNote.title}</h1>
+        <div className="markdown-preview "placeholder="Preview">{activeNote['note']}</div>
 
        </div>
 
