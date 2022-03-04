@@ -4,7 +4,22 @@
   box-sizing: border-box;
 }
 
+.padding-bottom {
+  padding-bottom: 24px;
+}
 /* GLOBAL STYLES */
+.textinput {
+  border: none;
+  outline: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+  Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.title {
+  font-weight: bold;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+  Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
 
 body,
 .App {
@@ -113,9 +128,30 @@ button:hover {
 
 /* Editing */
 
+.app-main-note {
+  padding: 20px;
+}
+
 .app-main-note-edit {
   padding: 20px;
 }
+
+/* .app-main input,
+textarea {
+  display: block;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  width: 100%;
+  height: calc(50vh - 130px);
+  padding: 10px;
+  resize: none;
+  font-size: inherit;
+  font-family: inherit;
+}
+.app-main input {
+  height: 50px;
+  font-size: 2rem;
+} */
 
 .app-main-note-edit input,
 textarea {
@@ -123,7 +159,8 @@ textarea {
   border: 1px solid #ddd;
   margin-bottom: 20px;
   width: 100%;
-  height: calc(50vh - 130px);
+  height: 100%;
+  /* height: calc(50vh - 130px); */
   padding: 10px;
   resize: none;
   font-size: inherit;

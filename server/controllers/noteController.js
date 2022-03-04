@@ -44,10 +44,17 @@ const noteController = {
         const { id } = req.params;
         const { title , note } = req.body;
 
-        const notesQuery = 'UPDATE notes SET title = $1, note = $2 WHERE note_id = $3';
-        const result = await db.query(notesQuery, [title, note, id]); 
-        return next();
+        if (title || note) {
+          // const notesQuery = 'UPDATE notes SET title = $1, note = $2 WHERE note_id = $3';
+          const titleBit = title ? `title = '${title}'` : '';
+          const notesBit = note ? `note = '${note}'` : '';
+          const comma = title && note ? ',' : '';
+          const notesQuery = `UPDATE notes SET ${titleBit}${comma} ${notesBit} WHERE note_id = ${id}`;
 
+          console.log(notesQuery);
+          const result = await db.query(notesQuery); 
+          return next();
+        }
       } catch (err) {
         console.error(err.message);
       }

@@ -13,11 +13,11 @@ class SidebarNote extends Component {
         <div className='app-sidebar-note' onClick={() => setActiveNote(id)}>
 
           <div className="sidebar-note-title">
-            <strong>{title}</strong>
-            <button onClick={() => deleteNote(id)}>Delete</button>
+            <strong data-placeholder='Untitled'>{title && title.substr(0, 20) + '...'}</strong>
+            <button onClick={() => deleteNote(id)}>➖</button>
           </div>
-          <p>{text && text.substr(0, 20) + '...'}</p>
-          <small className='note-meta'>Last Modified{" "} {new Date(date).toLocaleDateString('en-US', {hour: '2-digit', minute: '2-digit'})}</small>
+          <p placeholder='Note'>{text && text.substr(0, 20) + '...'}</p>
+          <small className='note-meta'>{new Date(date).toDateString()}</small>
 
         </div>
     </>
@@ -25,4 +25,5 @@ class SidebarNote extends Component {
   }
 }
 
+//{new Date(date).toLocaleDateString('en-US', {hour: '2-digit', minute: '2-digit'})}
 export default SidebarNote;

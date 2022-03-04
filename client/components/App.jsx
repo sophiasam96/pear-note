@@ -13,6 +13,8 @@ class App extends Component {
     this.setActiveNote = this.setActiveNote.bind(this);
     this.addNote = this.addNote.bind(this);
     this.deleteNote = this.deleteNote.bind(this);
+    this.onUpdateNote = this.onUpdateNote.bind(this);
+    this.saveUpdatedState = this.saveUpdatedState.bind(this);
   }
 
   componentDidMount() {
@@ -58,7 +60,7 @@ class App extends Component {
         'Content-Type': 'application/json; charset=utf-8',
       },
       body: JSON.stringify({
-        title: 'Untitled', 
+        title: '', 
         note: '' ,
       })
     }
@@ -66,8 +68,8 @@ class App extends Component {
     fetch('/api/', submission)
       .then(input => input.json())
       .then(input => {
-        location.reload();
-        console.log(input);
+        const newState = { notes: [...this.state.notes, ...input]};
+        this.setState(newState);
       })
       .catch(error => console.log(error));
   }
@@ -75,15 +77,52 @@ class App extends Component {
   deleteNote(id) {
       console.log(id)
       fetch(`/api/${id}`, { method: 'DELETE' })
-        .then(() => console.log('Delete successful'));
-        location.reload()
+        .then(() => console.log('Delete successful'))
+        .then(() => {
+          this.setState({ notes: this.state.notes.filter(e => e.note_id !== id )});
+        })
+        .catch(error => console.log(error));
   }
+
+  onUpdateNote(id, title, note) {
+    const updatedNote = {
+      title,
+      note
+    }
+    const submission = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+          },
+          body: JSON.stringify(updatedNote)
+        }
+    fetch(`/api/${id}`, submission)
+      .then(input => input.json())
+      .then(() => console.log('Update Successful!'))
+      .then(() => {
+        this.setActiveNote(id);
+        this.saveUpdatedState(id, title, note);
+      })
+      .catch(error => console.log(error))
+}
+
+saveUpdatedState(id, title, note) {
+  const newNotes = this.state.notes.map(e => {
+    if (e.note_id === id) {
+      if (title) {
+        e.title = title;
+      }
+      if (note) {
+        e.note = note;
+      }
+    }
+
+    return e;
+  });
+  this.setState({ notes: newNotes });
+}
   
-
-
   render() {
-
-
     // console.log('state in mount', this.state.notes)
     return (
       <div className='App'>
@@ -93,11 +132,32 @@ class App extends Component {
           activeNote={this.state.activeNote}
           addNote={this.addNote} 
           deleteNote={this.deleteNote} 
-        />
-        <Main activeNote={this.state.activeNote}/>
+          />
+        <Main 
+          onUpdateNote={this.onUpdateNote}
+          activeNote={this.state.activeNote}
+          saveUpdatedState={this.saveUpdatedState}
+          />
       </div>
     );
   }
 }
 
 export default App;
+    
+    // console.log('in onUpdateNOte')
+    // let newNote;
+    // // this.state.notes.map(note => {
+    //   // console.log('updated note ', updatedNote.note_id)
+    //   // console.log('curr noteid ', note.note_id)
+    //   // if (note.note_id === updatedNote.note_id) {
+    //     newNote = {
+    //       ...note,
+    //       note_id : note.note_id,
+    //       [key] : updatedNote.body,
+    //     }
+    //     console.log('newNote', newNote)
+    //     this.setState({ activeNote: newNote });
+    //     console.log('new activeNote', this.state)
+    //   // }
+    // // })

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavigationType } from 'react-router-dom';
+// import { NavigationType } from 'react-router-dom';
 import SidebarNote from './SidebarNote.jsx'
 
 // window.location.reload(true);
@@ -7,27 +7,7 @@ import SidebarNote from './SidebarNote.jsx'
 class Sidebar extends Component {
   constructor(props) {
     super(props);
-    // this.state = { 
-    //   notes: [],
-     
-    // }
   }
-
-//   componentDidMount() {
-//     fetch('/api')
-//     .then(res => res.json())
-//     .then(data => this.setState({ notes: data }))
-//     .catch(err => console.log(err));
-
-//   }
-  
-//   componentWillUnmount() {
-//     // fix Warning: Can't perform a React state update on an unmounted component
-//     clearInterval(this.interval);
-//     this.setState = (state,callback)=>{
-//     return;
-//     };
-// }
 
   render() {
     const {setActiveNote, addNote, deleteNote} = this.props;
@@ -53,7 +33,7 @@ class Sidebar extends Component {
 
           <div className="app-sidebar-header">
             <h1>Notes</h1>
-            <button type='button' onClick={() => addNote()}>Add</button>
+            <button type='button' onClick={() => addNote()}>➕</button>
           
           </div>
 
