@@ -21,40 +21,32 @@ class App extends Component {
     fetch('/api')
     .then(res => res.json())
     .then(data => this.setState({ notes: data}))
-    
     .catch(err => console.log(err));
-
   }
   
   componentWillUnmount() {
-    // fix Warning: Can't perform a React state update on an unmounted component
     clearInterval(this.interval);
     this.setState = (state,callback)=>{
     return;
     };
-}
+  }
 
   setActiveNote(id) {
-    // console.log('setActiveNote', id);
-    const {notes} = this.state.notes; 
     fetch(`/api/${id}`)
     .then(res => res.json())
-    .then(data => {
-      this.setState({ activeNote: data })
-      // console.log('setActive, ', this.state)
-    })
+    .then(data => this.setState({ activeNote: data }))
     .catch(err => console.log(err));
   }
 
 
   addNote() {
-     console.log('addNote');
-     const newNote = {
-       title: 'Untitled Note',
-       note: "",
-     }
+    console.log('addNote');
+    const newNote = {
+      title: 'Untitled Note',
+      note: "",
+    }
 
-     const submission = {
+    const submission = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
@@ -75,13 +67,12 @@ class App extends Component {
   }
 
   deleteNote(id) {
-      console.log(id)
-      fetch(`/api/${id}`, { method: 'DELETE' })
-        .then(() => console.log('Delete successful'))
-        .then(() => {
-          this.setState({ notes: this.state.notes.filter(e => e.note_id !== id )});
-        })
-        .catch(error => console.log(error));
+    fetch(`/api/${id}`, { method: 'DELETE' })
+      .then(() => console.log('Delete successful'))
+      .then(() => {
+        this.setState({ notes: this.state.notes.filter(e => e.note_id !== id )});
+      })
+      .catch(error => console.log(error));
   }
 
   onUpdateNote(id, title, note) {
@@ -90,12 +81,13 @@ class App extends Component {
       note
     }
     const submission = {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json; charset=utf-8',
-          },
-          body: JSON.stringify(updatedNote)
-        }
+      method: 'PUT',
+      headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+        },
+        body: JSON.stringify(updatedNote)
+      }
+      
     fetch(`/api/${id}`, submission)
       .then(input => input.json())
       .then(() => console.log('Update Successful!'))
@@ -123,7 +115,6 @@ saveUpdatedState(id, title, note) {
 }
   
   render() {
-    // console.log('state in mount', this.state.notes)
     return (
       <div className='App'>
         <Sidebar 
@@ -144,20 +135,3 @@ saveUpdatedState(id, title, note) {
 }
 
 export default App;
-    
-    // console.log('in onUpdateNOte')
-    // let newNote;
-    // // this.state.notes.map(note => {
-    //   // console.log('updated note ', updatedNote.note_id)
-    //   // console.log('curr noteid ', note.note_id)
-    //   // if (note.note_id === updatedNote.note_id) {
-    //     newNote = {
-    //       ...note,
-    //       note_id : note.note_id,
-    //       [key] : updatedNote.body,
-    //     }
-    //     console.log('newNote', newNote)
-    //     this.setState({ activeNote: newNote });
-    //     console.log('new activeNote', this.state)
-    //   // }
-    // // })

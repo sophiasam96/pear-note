@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-// import { NavigationType } from 'react-router-dom';
 import SidebarNote from './SidebarNote.jsx'
 
-// window.location.reload(true);
 
 class Sidebar extends Component {
   constructor(props) {
@@ -11,7 +9,6 @@ class Sidebar extends Component {
 
   render() {
     const {setActiveNote, addNote, deleteNote} = this.props;
-    // console.log(this.props.activeNote);
     const notesList = []
     this.props.notes.map(note => {
       notesList.push(<SidebarNote 
@@ -25,25 +22,21 @@ class Sidebar extends Component {
         activeNote={this.props.activeNote}
       />)
     })
-    // const sortedNotes = notesList.sort((a, b) => b.this.state.date - a.this.state.notes.date);
 
     return (
-      <>
-        <div className="app-sidebar">
-
-          <div className="app-sidebar-header">
-            <h1>Notes</h1>
-            <button type='button' onClick={() => addNote()}>➕</button>
-          
-          </div>
-
-          <div className='app-sidebar-notes'>
-            {notesList}
-          </div>
-
-
+      <div className="app-sidebar">
+        
+        <div className="app-sidebar-header">
+          <h1>Notes</h1>
+          <button type='button' onClick={() => addNote()}>➕</button>
         </div>
-      </>
+
+        <div className='app-sidebar-notes'>
+          {notesList}
+        </div>
+
+      </div>
+      
     )
   }
 }

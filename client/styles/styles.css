@@ -29,7 +29,7 @@ body,
   height: 100vh;
   overflow: hidden;
   font-size: 16px;
-  /* background: url(https://www.toptal.com/designers/subtlepatterns/patterns/lightpaperfibers.png); */
+  background-color:rgba(243, 243, 243, 0.774);
 }
 
 button {
@@ -136,39 +136,23 @@ button:hover {
   padding: 20px;
 }
 
-/* .app-main input,
-textarea {
-  display: block;
-  border: 1px solid #ddd;
-  margin-bottom: 20px;
-  width: 100%;
-  height: calc(50vh - 130px);
-  padding: 10px;
-  resize: none;
-  font-size: inherit;
-  font-family: inherit;
-}
-.app-main input {
-  height: 50px;
-  font-size: 2rem;
-} */
-
 .app-main-note-edit input,
 textarea {
   display: block;
-  border: 1px solid #ddd;
+  /* border: 1px solid rgb(235, 233, 233); */
   margin-bottom: 20px;
   width: 100%;
   height: 100%;
-  /* height: calc(50vh - 130px); */
   padding: 10px;
   resize: none;
   font-size: inherit;
   font-family: inherit;
+  background-color:rgba(243, 243, 243, 0.774);
 }
 .app-main-note-edit input {
   height: 50px;
   font-size: 2rem;
+  background-color:rgba(243, 243, 243, 0.774);
 }
 
 /* Preview */
