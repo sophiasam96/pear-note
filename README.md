@@ -1,13 +1,17 @@
-Solo Project Note App :) 
+<h2 align="center">Easy note taking app</h2>
 
-1. INSTALL DEPENDENCIES
-npm install
+***
+<br>
 
-2. BUILD
-npm build-dev
+## About Us
+Pear note is a easy to use note taking application, inspired by Notes by Apple.
 
-3. START SERVER (http://localhost:3000)
-npm run serve
+## Getting Started
 
-4. START CLIENT (http://localhost:3000)
-npm start
+1. Fork and clone this repository.
+2. ```npm install```
+3. ```npm run serve```
+4. ```start```
+
+## Technologies
+[React](https://reactjs.org/) | [Express.js](https://expressjs.com/) | [PostgreSQL](https://www.postgresql.org/)
