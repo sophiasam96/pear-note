@@ -2,7 +2,6 @@
 
 <h2 align="center">Easy note taking app</h2>
 
-***
 <br>
 
 ## About Us
