@@ -15,7 +15,6 @@
     "serve": "nodemon server/server.js"
   },
   "proxy": "http://localhost:3000",
-  
   "dependencies": {
     "express": "^4.17.3",
     "http-proxy-middleware": "^2.0.3",
