@@ -1,3 +1,5 @@
+![](/client/assets/pear_note-page.png) 
+
 <h2 align="center">Easy note taking app</h2>
 
 ***
