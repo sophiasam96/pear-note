@@ -5,7 +5,7 @@
 <br>
 
 ## About Us
-Pear note is a easy to use note taking application, inspired by Notes by Apple.
+Pear note is a easy to use note taking application, inspired by Notes from Apple.
 
 ## Getting Started
 
