@@ -12,7 +12,7 @@
     "build-prod": "webpack --mode production",
     "start": "webpack serve --hot --mode development",
     "test": "mocha",
-    "serve": "nodemon server/server.js"
+    "server": "nodemon server/server.js"
   },
   "proxy": "http://localhost:3000",
   "dependencies": {

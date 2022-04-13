@@ -11,8 +11,8 @@ Pear note is a easy to use note taking application, inspired by Notes from Apple
 
 1. Fork and clone this repository.
 2. ```npm install```
-3. ```npm run serve```
-4. ```start```
+3. ```npm run server```
+4. ```npm start```
 
 ## Demo  
 ![](/client/assets/pear-note-demo.gif) 
